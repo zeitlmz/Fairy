@@ -23,16 +23,15 @@ public class ShopProductController {
 
     /**
      * 购物车
-     * @param request
      * @return
      */
     @RequestMapping("/findAllByUid")
     @ResponseBody
-    public List<ShopProduct> finAllByUid(HttpServletRequest request){
-        User user = (User) request.getSession().getAttribute("user");
-        if (user==null){
-            return null;
-        }
-      return shopProductService.findAllByUid(user.getUid());
+    public List<ShopProduct> finAllByUid(Integer uid){
+        System.out.println(uid);
+
+        List<ShopProduct> allByUid = shopProductService.findAllByUid(uid);
+
+        return allByUid;
     }
 }

@@ -5,9 +5,14 @@ import com.etc.entity.Shop;
 import com.etc.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -16,6 +21,7 @@ import java.util.Random;
  * @author makejava
  * @since 2020-03-18 15:54:15
  */
+@CrossOrigin
 @Controller
 @RequestMapping("order")
 public class OrderController {
@@ -89,4 +95,26 @@ public class OrderController {
         shop.setTorf(0);
     }
 
+    @RequestMapping("findbystate0")
+    @ResponseBody
+    public List<Order> findbystate0(){
+        System.out.println("findbystate0");
+        return orderService.findByState(new Integer(0));
+    }
+
+    @RequestMapping("findByCod")
+    @ResponseBody
+    public List<Order> findByCod() {
+        return orderService.findByCod();
+    }
+    @RequestMapping("findbystate2")
+    @ResponseBody
+    public List<Order> findbystate2(){
+        System.out.println("findbystate2");
+        List<Order> byState = orderService.findByState(new Integer(2));
+        for (Order order : byState) {
+            System.out.println(order);
+        }
+        return byState;
+    }
 }

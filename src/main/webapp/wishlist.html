@@ -26,6 +26,7 @@
 
 	<!-- Custom Styles -->
 	<link rel="stylesheet" href="css/custom.css">
+
 </head>
 
 <body>
@@ -235,10 +236,10 @@
 									<th class="cart-column-price" scope="col">价格</th>
 									<th class="cart-column-quantity" scope="col">数量</th>
 									<th class="cart-column-addtocart" scope="col">添加到购物车</th>
-									<th class="cart-column-remove" scope="col">移出购物车</th>
+									<th class="cart-column-remove" scope="col">移出购物清单</th>
 								</tr>
 							</thead>
-							<tbody>
+							<tbody id="shopProduct">
 
 								<tr>
 									<td>
@@ -706,6 +707,49 @@
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/plugins.js"></script>
 	<script src="js/main.js"></script>
+
+	<script>
+		var user=sessionStorage.getItem("uid");
+		// alert(user)
+		// if (user>0){
+		// 	location="login-register.html";
+		// }
+
+		$(function () {
+			$.get("http://localhost:8080/Fairy/shopProduct/findAllByUid",{"uid":user},function (data){
+				alert(data)
+				var str="";
+				for (var i = 0; i < data.length; i++){
+					str+="\t<tr>\n" +
+							"\t\t\t\t\t\t\t\t\t<td>\n" +
+							"\t\t\t\t\t\t\t\t\t\t<a href=\"product-details-right-sidebar.html\" class=\"product-image\">\n" +
+							"\t\t\t\t\t\t\t\t\t\t\t<img src=\"img/product/small-size/product-image-1.jpg\" alt=\"product image\">\n" +
+							"\t\t\t\t\t\t\t\t\t\t</a>\n" +
+							"\t\t\t\t\t\t\t\t\t</td>\n" +
+							"\t\t\t\t\t\t\t\t\t<td>\n" +
+							"\t\t\t\t\t\t\t\t\t\t<a href=\"product-details-right-sidebar.html\" class=\"product-title\">Aenean sagittis</a>\n" +
+							"\t\t\t\t\t\t\t\t\t</td>\n" +
+							"\t\t\t\t\t\t\t\t\t<td>"+data[i].price+"</td>\n" +
+							"\t\t\t\t\t\t\t\t\t<td>\n" +
+							"\t\t\t\t\t\t\t\t\t\t<div class=\"quantity-select\">\n" +
+							"\t\t\t\t\t\t\t\t\t\t\t<input type=\"text\" value=\"1\">\n" +
+							"\t\t\t\t\t\t\t\t\t\t</div>\n" +
+							"\t\t\t\t\t\t\t\t\t</td>\n" +
+							"\t\t\t\t\t\t\t\t\t<td>\n" +
+							"\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"sf-button sf-button-sm\">\n" +
+							"                                            <span>添加到购物车</span>\n" +
+							"                                        </a>\n" +
+							"\t\t\t\t\t\t\t\t\t</td>\n" +
+							"\t\t\t\t\t\t\t\t\t<td>\n" +
+							"\t\t\t\t\t\t\t\t\t\t<button class=\"remove-product\"><i class=\"ti ti-close\"></i></button>\n" +
+							"\t\t\t\t\t\t\t\t\t</td>\n" +
+							"\t\t\t\t\t\t\t\t</tr>"
+				}
+				$("#shopProduct").before(str);
+
+			});
+		})
+	</script>
 </body>
 
 </html>

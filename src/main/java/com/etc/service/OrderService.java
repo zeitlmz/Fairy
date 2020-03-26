@@ -53,4 +53,8 @@ public interface OrderService {
      */
     boolean deleteById();
 
+    List<Order> findByCod();
+
+    List<Order> findByState(Integer productstate);
+
 }

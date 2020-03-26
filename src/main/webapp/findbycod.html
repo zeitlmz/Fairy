@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询自取订单</title>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $.get("http://localhost:8080/Fairy/order/findByCod",{},function (data) {
+                alert(data)
+                var str="";
+                for (var i = 0; i < data.length; i++) {
+                    str+="<div>"+data[i].oid+"</div>\n" +
+                        "    <div>"+data[i].productstate+"</div>\n" +
+                        "    <div>"+data[i].address+"</div>\n"+
+                        "    <div>"+data[i].phone+"</div>\n"+
+                        "    <div>"+data[i].cod+"</div>\n"
+                }
+                $("#findByCod").html(str);
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div id="findByCod">
+</div>
+
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询已完成订单</title>
+
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+        $(function () {
+            $.get("http://localhost:8080/Fairy/order/findbystate2",{},function (data) {
+                alert(data)
+                var str="";
+                for (var i = 0; i < data.length; i++) {
+                    str+="<div>"+data[i].oid+"</div>\n" +
+                        "    <div>"+data[i].productstate+"</div>\n" +
+                        "    <div>"+data[i].address+"</div>\n"+
+                        "    <div>"+data[i].phone+"</div>\n"
+                }
+                $("#state2").html(str);
+            })
+        })
+    </script>
+</head>
+<body>
+
+<div id="state2">
+</div>
+
+</body>
+</html>

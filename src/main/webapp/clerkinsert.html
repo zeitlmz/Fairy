@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>新增店员</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script>
+
+        $(function () {
+            $("#insert").click(function () {
+                var name=$('#register-form-name').val();
+                var  phonenumber=$('#register-form-phonenumber').val();
+                var  idnumber=$('#register-form-idnumber').val();
+                var  email=$('#register-form-email').val();
+
+
+                $.post(
+                    "http://localhost:8080/Fairy/clerk/insert",
+                    {
+                        name:name,
+                        phonenumber:phonenumber,
+                        idnumber:idnumber,
+                        email:email
+                    },
+                    function (data) {
+                        if (data){
+                            alert("新增店员成功")
+                        }else {
+                            alert("新增店员失败")
+                        }
+                    }
+                )
+            })
+        })
+    </script>
+</head>
+<body>
+<div class="col-lg-6">
+    <div class="register-form-wrapper">
+        <div class="sf-form sf-form-boxed">
+            <div class="sf-form-inner">
+                <div class="single-input">
+                    <label for="register-form-name">姓名</label>
+                    <input type="text" name="register-form-name" id="register-form-name">
+                </div>
+                <div class="single-input">
+                    <label for="register-form-phonenumber">电话号码</label>
+                    <input type="text" name="register-form-name" id="register-form-phonenumber">
+                </div>
+                <div class="single-input">
+                    <label for="register-form-idnumber">身份证</label>
+                    <input type="text" name="register-form-idnumber" id="register-form-idnumber">
+                </div>
+                <div class="single-input">
+                    <label for="register-form-email">邮箱</label>
+                    <input type="text" name="register-form-email" id="register-form-email">
+                </div>
+                <div class="single-input">
+                    <button type="submit" class="sf-button sf-button-dark" id="insert">
+                        <span>新增</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

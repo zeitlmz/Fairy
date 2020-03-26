@@ -1,6 +1,7 @@
 package com.etc.dao;
 
 import com.etc.entity.Clerk;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -47,8 +48,8 @@ public interface ClerkDao {
      * @param clerk 实例对象
      * @return 影响行数
      */
+    @Insert("insert into clerk (name,phonenumber,idnumber,gender,email) values (#{name},#{phonenumber},#{idnumber},#{gender},#{email})")
     int insert(Clerk clerk);
-
     /**
      * 修改数据
      *

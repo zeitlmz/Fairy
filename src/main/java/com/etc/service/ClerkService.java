@@ -35,7 +35,7 @@ public interface ClerkService {
      * @param clerk 实例对象
      * @return 实例对象
      */
-    Clerk insert(Clerk clerk);
+    boolean insert(Clerk clerk);
 
     /**
      * 修改数据

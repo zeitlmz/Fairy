@@ -79,7 +79,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<Product> findAll() {
-        System.out.println("findAll");
         return this.productDao.findAll();
     }
 }

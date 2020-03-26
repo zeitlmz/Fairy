@@ -49,9 +49,9 @@ public class ClerkServiceImpl implements ClerkService {
      * @return 实例对象
      */
     @Override
-    public Clerk insert(Clerk clerk) {
-        this.clerkDao.insert(clerk);
-        return clerk;
+    public boolean insert(Clerk clerk) {
+
+        return clerkDao.insert(clerk) > 0;
     }
 
     /**

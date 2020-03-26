@@ -43,33 +43,19 @@ public class UserController {
     @RequestMapping("login")
     @ResponseBody
     public User login(String username, String password, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        System.out.println(username);
-        User user = userService.findByUsernameAndPassword(username, password);
-        if (user != null){
-            //那前端的其他网页怎么判断，这个用户名的session是否存在
-            request.getSession().setAttribute("user",user);
-            User user1= (User) request.getSession().getAttribute("user");
-            System.out.println("成功");
-            return user1;
-        }else {
-            System.out.println("失败");
-            return user;
-        }
-
+        return userService.findByUsernameAndPassword(username, password);
     }
 
 
-    @PostMapping("/insert")
-    public ModelAndView insert(User user) {
-        ModelAndView modelAndView = new ModelAndView();
-        boolean isok = userService.insert(user);
-        user.setJoindate(new Date());
-        if (isok) {
-            modelAndView.addObject("msg", "注册成功");
-        } else {
-            modelAndView.addObject("msg", "注册失败");
-        }
-        modelAndView.setViewName("success");
-        return modelAndView;
+    @RequestMapping("insert")
+    @ResponseBody
+    public boolean insert(String username,String email,String password,String phonenumber,String name) {
+        User user=new User();
+        user.setUsername(username);
+        user.setName(name);
+        user.setPhonenumber(phonenumber);
+        user.setEmail(email);
+        user.setPassword(password);
+        return userService.insert(user);
     }
 }

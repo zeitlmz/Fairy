@@ -76,4 +76,16 @@ public class OrderServiceImpl implements OrderService {
     public boolean deleteById( ) {
         return this.orderDao.deleteById() > 0;
     }
+
+
+
+    @Override
+    public List<Order> findByCod() {
+        return orderDao.findByCod();
+    }
+
+    @Override
+    public List<Order> findByState(Integer productstate) {
+        return orderDao.findByState(productstate);
+    }
 }

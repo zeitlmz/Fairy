@@ -25,7 +25,7 @@ public class Clerk implements Serializable {
     /**
      * 手机号
      */
-    private Integer phonenumber;
+    private String phonenumber;
     /**
      * 姓名
      */
@@ -33,7 +33,7 @@ public class Clerk implements Serializable {
     /**
      * 身份证号
      */
-    private Integer idnumber;
+    private String idnumber;
     /**
      * 性别
      */
@@ -68,11 +68,11 @@ public class Clerk implements Serializable {
         this.password = password;
     }
 
-    public Integer getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
-    public void setPhonenumber(Integer phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 
@@ -84,11 +84,11 @@ public class Clerk implements Serializable {
         this.name = name;
     }
 
-    public Integer getIdnumber() {
+    public String getIdnumber() {
         return idnumber;
     }
 
-    public void setIdnumber(Integer idnumber) {
+    public void setIdnumber(String idnumber) {
         this.idnumber = idnumber;
     }
 

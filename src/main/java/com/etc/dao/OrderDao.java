@@ -3,6 +3,7 @@ package com.etc.dao;
 import com.etc.entity.Order;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public interface OrderDao {
     /**
      * 通过ID查询单条数据
      *
-     * @param  主键
+     * @param 主键
      * @return 实例对象
      */
     Order queryById();
@@ -26,7 +27,7 @@ public interface OrderDao {
      * 查询指定行数据
      *
      * @param offset 查询起始位置
-     * @param limit 查询条数
+     * @param limit  查询条数
      * @return 对象列表
      */
     List<Order> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
@@ -60,9 +61,18 @@ public interface OrderDao {
     /**
      * 通过主键删除数据
      *
-     * @param  主键
+     * @param
      * @return 影响行数
      */
     int deleteById();
+
+
+
+
+    @Select("select * from taborder where cod is not NULL")
+    List<Order> findByCod();
+
+    @Select("select * from taborder where productstate=#{productstate}")
+    List<Order> findByState(Integer productstate);
 
 }

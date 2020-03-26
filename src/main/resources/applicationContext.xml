@@ -23,9 +23,9 @@
     <!--配置连接池-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
         <property name="driverClass" value="com.mysql.jdbc.Driver"/>
-        <property name="jdbcUrl" value="jdbc:mysql:///convenience_store"/>
+        <property name="jdbcUrl" value="jdbc:mysql:///demo"/>
         <property name="user" value="root"/>
-        <property name="password" value="181598"/>
+        <property name="password" value="123456"/>
     </bean>
 
     <!--配置SqlSessionFactory工厂-->

@@ -53,12 +53,6 @@
                     </div>
                     <ul class="header-options">
                         <li>
-                            <a href="my-account.html">我的帐户</a>
-                        </li>
-                        <li>
-                            <a href="wishlist.html">购物清单</a>
-                        </li>
-                        <li>
                             <a href="login-register.html">登录/注册</a>
                         </li>
                     </ul>
@@ -76,7 +70,6 @@
                     </a>
                     <nav class="sf-navigation">
                         <ul>
-                            <li><a href="index.html">首页</a>
                             </li>
                             <li><a href="about-us.html">关于我们</a></li>
                             <li><a href="shop.html">商城</a></li>
@@ -91,49 +84,6 @@
                                     <input type="text" placeholder="Search">
                                     <button><i class="ti ti-search"></i></button>
                                 </form>
-                            </div>
-                        </li>
-                        <li>
-                            <button class="header-minicart-trigger"><i class="ti ti-shopping-cart"></i></button>
-                            <!--购物车-->
-                            <div class="minicart header-minicart">
-                                <ul class="minicart-product-list">
-                                    <li>
-                                        <a href="product-details-right-sidebar.html" class="minicart-product-image">
-                                            <img src="img/product/small-size/product-image-1.jpg" alt="cart products">
-                                        </a>
-                                        <div class="minicart-product-details">
-                                            <h6><a href="product-details-right-sidebar.html">Aenean eu tristique</a>
-                                            </h6>
-                                            <span>£80 x 2</span>
-                                        </div>
-                                        <button class="close">
-                                            <i class="ti ti-close"></i>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <a href="product-details-right-sidebar.html" class="minicart-product-image">
-                                            <img src="img/product/small-size/product-image-2.jpg" alt="cart products">
-                                        </a>
-                                        <div class="minicart-product-details">
-                                            <h6><a href="product-details-right-sidebar.html">Aenean sagittis</a></h6>
-                                            <span>£80 x 1</span>
-                                        </div>
-                                        <button class="close">
-                                            <i class="ti ti-close"></i>
-                                        </button>
-                                    </li>
-                                </ul>
-                                <p class="minicart-total">SUBTOTAL: <span>£315.00</span></p>
-                                <div class="minicart-button">
-                                    <a href="checkout.html"
-                                       class="sf-button sf-button-dark sf-button-fullwidth sf-button-sm">
-                                        <span>查看全部</span>
-                                    </a>
-                                    <a href="checkout.html" class="sf-button sf-button-fullwidth sf-button-sm">
-                                        <span>付款</span>
-                                    </a>
-                                </div>
                             </div>
                         </li>
                     </ul>
@@ -1137,73 +1087,109 @@
          * 添加购物车
          */
         $("#id1").click(function () {
-            $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 1, uid: 1, number: 1}, function (data) {
-                if (data) {
-                    alert("加入购物车成功")
-                } else {
-                    alert("系统繁忙")
-                }
-            })
+            var uid = sessionStorage.getItem("uid");
+            if (uid <= 0) {
+                alert("请先登录");
+                location = "login-register.html";
+            } else {
+                $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 1, uid: 1, number: 1}, function (data) {
+                    if (data) {
+                        alert("加入购物车成功")
+                    } else {
+                        alert("系统繁忙")
+                    }
+                })
+            }
         })
         $("#id2").click(function () {
-            $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 2, uid: 1, number: 1}, function (data) {
-                if (data) {
-                    alert("加入购物车成功")
-                } else {
-                    alert("系统繁忙")
-                }
-            })
+            var uid = sessionStorage.getItem("uid");
+            if (uid <= 0) {
+                alert("请先登录");
+                location = "login-register.html";
+            } else {
+                $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 2, uid: 1, number: 1}, function (data) {
+                    if (data) {
+                        alert("加入购物车成功")
+                    } else {
+                        alert("系统繁忙")
+                    }
+                })
+            }
         })
         $("#id3").click(function () {
-            $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 3, uid: 1, number: 1}, function (data) {
-                if (data) {
-                    alert("加入购物车成功")
-                } else {
-                    alert("系统繁忙")
-                }
-            })
+            var uid = sessionStorage.getItem("uid");
+            if (uid <= 0) {
+                alert("请先登录");
+                location = "login-register.html";
+            } else {
+                $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 3, uid: 1, number: 1}, function (data) {
+                    if (data) {
+                        alert("加入购物车成功")
+                    } else {
+                        alert("系统繁忙")
+                    }
+                })
+            }
         })
         $("#id4").click(function () {
-            $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 4, uid: 1, number: 1}, function (data) {
-                if (data) {
-                    alert("加入购物车成功")
+                var uid = sessionStorage.getItem("uid");
+                if (uid <= 0) {
+                    alert("请先登录");
+                    location = "login-register.html";
                 } else {
-                    alert("系统繁忙")
+
+                    $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 4, uid: 1, number: 1}, function (data) {
+                        if (data) {
+                            alert("加入购物车成功")
+                        } else {
+                            alert("系统繁忙")
+                        }
+                    })
                 }
-            })
-        })
+            }
+        );
         $("#id5").click(function () {
-            $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 5, uid: 1, number: 1}, function (data) {
-                if (data) {
-                    alert("加入购物车成功")
-                } else {
-                    alert("系统繁忙")
-                }
-            })
+            var uid = sessionStorage.getItem("uid");
+            if (uid <= 0) {
+                alert("请先登录");
+                location = "login-register.html";
+            } else {
+                $.post("http://localhost:8080/Fairy/shop/addShop", {pid: 5, uid: 1, number: 1}, function (data) {
+                    if (data) {
+                        alert("加入购物车成功")
+                    } else {
+                        alert("系统繁忙")
+                    }
+                })
+            }
         })
         $("#show1").click(function () {
             sessionStorage.setItem("pid", 1);
-            alert("成功")
         })
         $("#show2").click(function () {
             sessionStorage.setItem("pid", 2);
-            alert("成功2")
         })
+        /*// 添加购物车*/
+
 
         $("#addShop").click(function () {
-            var pid=sessionStorage.getItem("pid");
-            alert(pid);
-            $.post("http://localhost:8080/Fairy/shop/addShop", {pid: pid, uid: 1, number: 1}, function (data) {
-                if (data) {
-                    alert("加入购物车成功")
-                } else {
-                    alert("系统繁忙")
-                }
-            })
+            var uid = sessionStorage.getItem("uid");
+            if (uid <= 0) {
+                alert("请先登录");
+                location = "login-register.html";
+            } else {
+                var pid = sessionStorage.getItem("pid");
+                alert(pid);
+                $.post("http://localhost:8080/Fairy/shop/addShop", {pid: pid, uid: 1, number: 1}, function (data) {
+                    if (data) {
+                        alert("加入购物车成功")
+                    } else {
+                        alert("系统繁忙")
+                    }
+                })
+            }
         })
     })
-
-
 
 </script>
 </body>
